@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import AnimatedBackground from '../components/three/AnimatedBackground';
+import NeuralNetworkVisualization from '../components/three/NeuralNetworkVisualization';
 import Section from '../components/ui/Section';
 import LearningPathCard from '../components/ui/LearningPathCard';
 import { useData } from '../store/DataContext';
@@ -89,8 +89,10 @@ const Home = () => {
   
   return (
     <>
-      {/* Animated Background */}
-      <AnimatedBackground />
+      {/* Advanced Neural Network Visualization */}
+      <div className="fixed inset-0 z-0">
+        <NeuralNetworkVisualization />
+      </div>
       
       {/* Hero Section */}
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">

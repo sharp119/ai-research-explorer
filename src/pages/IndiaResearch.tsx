@@ -5,6 +5,7 @@ import Section from '../components/ui/Section';
 import InstitutionCard from '../components/ui/InstitutionCard';
 import { fadeIn, staggerContainer, staggerItem } from '../utils/animations';
 import Loader from '../components/ui/Loader';
+import IndiaMap from '../components/three/IndiaMap';
 
 const IndiaResearch = () => {
   const { data, loading } = useData();
@@ -159,55 +160,14 @@ const IndiaResearch = () => {
         </AnimatePresence>
       </Section>
       
-      {/* Map Section */}
+      {/* Interactive 3D Map Section */}
       <Section
         title="Research Hubs Across India"
         subtitle="Key locations for AI and cognitive science research in India"
         className="bg-secondary-900/50"
       >
-        <div className="relative h-96 rounded-xl overflow-hidden glass">
-          <div className="absolute inset-0 bg-blue-900/10"></div>
-          {/* Placeholder map - in a real implementation, you'd use a proper mapping library */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <p className="text-secondary-400">Interactive map would be shown here</p>
-          </div>
-          
-          {/* Research hub indicators */}
-          <motion.div 
-            className="absolute top-1/4 left-1/4 w-4 h-4 rounded-full bg-blue-500"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <div className="absolute inset-0 rounded-full bg-blue-500 animate-ping opacity-75"></div>
-            <div className="absolute -top-8 -left-16 bg-secondary-900 px-2 py-1 rounded text-xs">Delhi</div>
-          </motion.div>
-          
-          <motion.div 
-            className="absolute top-1/2 left-1/3 w-4 h-4 rounded-full bg-green-500"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
-          >
-            <div className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-75"></div>
-            <div className="absolute -top-8 -left-16 bg-secondary-900 px-2 py-1 rounded text-xs">Bangalore</div>
-          </motion.div>
-          
-          <motion.div 
-            className="absolute bottom-1/3 right-1/3 w-4 h-4 rounded-full bg-purple-500"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
-          >
-            <div className="absolute inset-0 rounded-full bg-purple-500 animate-ping opacity-75"></div>
-            <div className="absolute -top-8 -left-16 bg-secondary-900 px-2 py-1 rounded text-xs">Hyderabad</div>
-          </motion.div>
-          
-          <motion.div 
-            className="absolute bottom-1/4 left-1/4 w-4 h-4 rounded-full bg-red-500"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.9 }}
-          >
-            <div className="absolute inset-0 rounded-full bg-red-500 animate-ping opacity-75"></div>
-            <div className="absolute -top-8 -left-16 bg-secondary-900 px-2 py-1 rounded text-xs">Mumbai</div>
-          </motion.div>
+        <div className="h-[500px] rounded-xl overflow-hidden glass">
+          <IndiaMap />
         </div>
       </Section>
       

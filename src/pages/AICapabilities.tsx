@@ -5,6 +5,7 @@ import Section from '../components/ui/Section';
 import TechnologyCard from '../components/ui/TechnologyCard';
 import { staggerContainer, staggerItem, fadeIn } from '../utils/animations';
 import Loader from '../components/ui/Loader';
+import AICapabilitiesGlobe from '../components/three/AICapabilitiesGlobe';
 
 const AICapabilities = () => {
   const { data, loading } = useData();
@@ -64,11 +65,16 @@ const AICapabilities = () => {
   
   return (
     <div className="pt-20 pb-20">
-      {/* Hero Section */}
+      {/* Hero Section with 3D Globe Visualization */}
       <div className="bg-secondary-900 py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-primary-900/50 to-secondary-900/50 mix-blend-multiply"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(67,56,202,0.1),rgba(10,10,30,0.5))]"></div>
+          
+          {/* 3D Globe Visualization */}
+          <div className="absolute inset-0 md:inset-auto md:top-0 md:right-0 md:w-1/2 md:h-full opacity-70">
+            <AICapabilitiesGlobe />
+          </div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
