@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 10, 10, 30;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1b4b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4338ca;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}
+
+/* Text highlight styles */
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: #fff;
+}
+
+/* Animation utilities */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-wave {
+  animation: wave 8s linear infinite;
+}
+
+/* Gradient text */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-primary-500 to-accent-400;
+}
+
+/* Glass effect */
+.glass {
+  @apply bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg border border-white/10 shadow-xl;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply px-4 py-2 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 rounded-lg font-medium transition-all shadow-lg hover:shadow-primary-500/20 active:scale-95;
+}
+
+.btn-secondary {
+  @apply px-4 py-2 bg-secondary-800 hover:bg-secondary-700 rounded-lg font-medium transition-all border border-secondary-700 hover:border-secondary-600;
+}
+
+.btn-outline {
+  @apply px-4 py-2 border border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white rounded-lg font-medium transition-all;
+}
+
+/* Card styles */
+.card {
+  @apply rounded-xl overflow-hidden glass p-6 transition-all duration-300;
+}
+
+.card-hover {
+  @apply hover:translate-y-[-4px] hover:shadow-lg hover:shadow-primary-500/10;
+}
+
+/* Page transition */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
