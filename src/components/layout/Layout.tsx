@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import CustomCursor from '../ui/CustomCursor';
 import { DataProvider } from '../../store/DataContext';
 
 const Layout = () => {
@@ -16,6 +17,7 @@ const Layout = () => {
   return (
     <DataProvider>
       <div className="flex flex-col min-h-screen">
+        <CustomCursor />
         <Navbar />
         
         <AnimatePresence mode="wait">
