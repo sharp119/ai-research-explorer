@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node scripts/copyDatabase.js && vite",
     "build": "node scripts/copyDatabase.js && tsc && vite build",
+    "vercel-build": "node scripts/vercelBuild.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

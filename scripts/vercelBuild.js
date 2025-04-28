@@ -1,10 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 // Get the current file name and directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+console.log('Starting Vercel build process...');
 
 // Try multiple possible locations for the source file
 const possibleSourcePaths = [
@@ -19,21 +22,18 @@ const destPath = path.resolve(publicDir, 'ai_research_database.json');
 
 // Ensure public directory exists
 if (!fs.existsSync(publicDir)) {
+  console.log('Creating public directory...');
   fs.mkdirSync(publicDir, { recursive: true });
-}
-
-// Check if the destination file already exists
-if (fs.existsSync(destPath)) {
-  console.log('Database file already exists in public folder, skipping copy');
-  process.exit(0);
 }
 
 // Try to find and copy the database file from any of the possible locations
 let copied = false;
 
 for (const sourcePath of possibleSourcePaths) {
+  console.log(`Checking for database at: ${sourcePath}`);
   try {
     if (fs.existsSync(sourcePath)) {
+      console.log(`Found database at: ${sourcePath}`);
       const data = fs.readFileSync(sourcePath, 'utf8');
       fs.writeFileSync(destPath, data);
       console.log(`Database file successfully copied from ${sourcePath} to public folder`);
@@ -53,6 +53,20 @@ if (!copied) {
     console.log('Created empty database file');
   } catch (error) {
     console.error('Error creating empty database file:', error);
-    process.exit(1);
+    // Continue with build anyway
   }
 }
+
+// Run the actual build commands
+try {
+  console.log('Running TypeScript compiler...');
+  execSync('tsc', { stdio: 'inherit' });
+  
+  console.log('Running Vite build...');
+  execSync('vite build', { stdio: 'inherit' });
+  
+  console.log('Build completed successfully!');
+} catch (error) {
+  console.error('Build process failed:', error);
+  process.exit(1);
+} 

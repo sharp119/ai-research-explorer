@@ -1,11 +1,17 @@
 {
     "version": 2,
+    "buildCommand": "cd ai-research-explorer && npm run vercel-build",
+    "outputDirectory": "ai-research-explorer/dist",
+    "installCommand": "cd ai-research-explorer && npm install",
+    "framework": "vite",
     "build": {
       "env": {
         "DATABASE_PATH": "ai_research_database.json"
       }
     },
-    
-    "routes": []
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/(.*)", "dest": "/index.html" }
+    ]
 }
 
