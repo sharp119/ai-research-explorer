@@ -1,0 +1,28 @@
+{
+    "version": 2,
+    "build": {
+      "env": {
+        "DATABASE_PATH": "ai_research_database.json"
+      }
+    },
+    "files": [
+      "public/**",
+      "scripts/**",
+      "src/**",
+      "*.js",
+      "*.ts",
+      "*.html",
+      "*.md",
+      "package.json",
+      "package-lock.json",
+      "yarn.lock",
+      "postcss.config.js",
+      "tailwind.config.js",
+      "tsconfig.json",
+      "tsconfig.node.json",
+      "vite.config.ts",
+      "ai_research_database.json"
+    ],
+    "routes": []
+}
+
