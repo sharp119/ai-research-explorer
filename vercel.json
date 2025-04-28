@@ -1,8 +1,8 @@
 {
     "version": 2,
-    "buildCommand": "cd ai-research-explorer && npm run vercel-build",
-    "outputDirectory": "ai-research-explorer/dist",
-    "installCommand": "cd ai-research-explorer && npm install",
+    "buildCommand": "npm run vercel-build",
+    "outputDirectory": "dist",
+    "installCommand": "npm install",
     "framework": "vite",
     "build": {
       "env": {
