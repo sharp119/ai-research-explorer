@@ -57,18 +57,40 @@ if (!copied) {
   }
 }
 
+// List contents of dist directory after build to help debug
+function listDistContents() {
+  try {
+    const distDir = path.resolve(__dirname, '../dist');
+    if (fs.existsSync(distDir)) {
+      console.log('Contents of dist directory:');
+      const files = fs.readdirSync(distDir, { recursive: true });
+      files.forEach(file => console.log(`- ${file}`));
+    } else {
+      console.log('dist directory does not exist');
+    }
+  } catch (error) {
+    console.error('Error listing dist contents:', error);
+  }
+}
+
 // Run the actual build commands
 try {
-  console.log('TypeScript check only (not failing on errors)...');
-  // Run TypeScript check but don't fail the build
+  console.log('TypeScript checking (showing errors but continuing)...');
   try {
+    // Run TypeScript check and show errors but don't fail the build
     execSync('tsc --noEmit', { stdio: 'inherit' });
+    console.log('TypeScript check completed successfully');
   } catch (tsError) {
-    console.log('TypeScript check found errors but continuing with build...');
+    console.error('TypeScript check found errors but continuing with build...');
+    // Output the error for debugging
+    console.error(tsError.message || 'Unknown TypeScript error');
   }
   
   console.log('Running Vite build...');
   execSync('vite build', { stdio: 'inherit' });
+  
+  // List contents of the dist directory to help with debugging
+  listDistContents();
   
   console.log('Build completed successfully!');
 } catch (error) {
